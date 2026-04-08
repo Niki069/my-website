@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-neon-cyan: var(--neon-primary);
+  --color-neon-purple: var(--neon-secondary);
+  --color-text-main: var(--text-main);
+  --color-text-muted: var(--text-muted);
+}
+
+@layer base {
+  :root {
+    /* Cyber Theme (Default) */
+    --neon-primary: #06b6d4;
+    --neon-secondary: #a855f7;
+    --bg-from: #0f172a;
+    --bg-via: #1e1b4b;
+    --bg-to: #0f172a;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --card-border: rgba(255, 255, 255, 0.1);
+    --text-main: #e2e8f0;
+    --text-muted: #94a3b8;
+  }
+
+  [data-theme='claude'] {
+    /* Claude-inspired Theme */
+    --neon-primary: #d97706;
+    /* Amber/Bronze */
+    --neon-secondary: #92400e;
+    --bg-from: #fbfaf8;
+    --bg-via: #f5f2ed;
+    --bg-to: #fbfaf8;
+    --card-bg: rgba(255, 255, 255, 0.8);
+    --card-border: rgba(0, 0, 0, 0.05);
+    --text-main: #1a1a1a;
+    --text-muted: #6b7280;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-[var(--bg-from)] text-[var(--text-main)] font-sans antialiased transition-colors duration-500;
+  }
+}
+
+.glass {
+  @apply bg-[var(--card-bg)] backdrop-blur-md border border-[var(--card-border)];
+}
+
+.glass-hover {
+  @apply hover:bg-[var(--card-bg)] hover:border-[var(--neon-primary)]/30 transition-all duration-300;
+}
+
+.text-gradient-cyan-purple {
+  @apply bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent;
+}
+
+.glow-primary {
+  box-shadow: 0 0 20px var(--neon-primary);
+}
+
+@keyframes scan {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+
+  5% {
+    opacity: 1;
+  }
+
+  95% {
+    opacity: 1;
+  }
+
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+.animate-\[scan_3s_linear_infinite\] {
+  animation: scan 3s linear infinite;
+}
